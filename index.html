@@ -3,13 +3,164 @@
 <head>
   <title></title>
 
+  <style type="text/css">
+      .tooltip {
+          text-decoration:none;
+          position:relative;
+      }
+      .tooltip #popup {
+          display:none;
+          background: #fff;
+          position:fixed;
+          overflow:hidden;
+      }
+      /*.tooltip:hover #popup {
+          display:block;
+          position:fixed;
+          overflow:hidden;
+          background: #fff;
+      }*/
+  </style>
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  <script type="text/javascript">
+
+  $(function() {
+    mapping = {
+      path4637: 'DBI',
+      path4635: 'LCH',
+      path4515: 'HGI',
+      path9791: 'CBA',
+      path3743: 'LCA',
+      path9793: 'LSO',
+      path9799: 'BCA',
+      path9801: 'TQU',
+      path9807: 'YBA',
+      path9805: 'SLA',
+      path9811: 'PTH',
+      path9803: 'VYE',
+      path9811: 'VTR',
+      path9795: 'BGI',
+      path4523: 'QNI',
+      path4519: 'HDU',
+      path9817: 'HYE',
+      path4521: 'HPH',
+      path4525: 'TBI',
+      path4527: 'PLI',
+      path9809: 'HNO',
+      path9815: 'HBI',
+      path4529: 'NDI',
+      path9813: 'NBI',
+      path4533: 'THO',
+      path4535: 'NAN',
+      path4537: 'HTI',
+      path4539: 'QBI',
+      path4541: 'QTR',
+      path4543: 'HUE',
+      path4545: 'DNA',
+      path4547: 'QNA',
+      path4549: 'QNG',
+      path4551: 'KTU',
+      path4555: 'BDI',
+      path4553: 'GLA',
+      path4557: 'PYE',
+      path4559: 'DLA',
+      path4565: 'KHO',
+      path4561: 'LDO',
+      path4563: 'NTH',
+      path4567: 'BTH',
+      path4571: 'DNA',
+      path4579: 'BRI',
+      path4585: 'TGI',
+      path4581: 'BDU',
+      path4569: 'BPH',
+      path4577: 'HCM',
+      path4575: 'LAN',
+      path4583: 'DTH',
+      path4589: 'BTR',
+      path4587: 'VLO',
+      path4591: 'TVI',
+      path4593: 'CTH',
+      path4603: 'STR',
+      path4601: 'BLI',
+      path4597: 'KGI',
+      path4599: 'CMA',
+      path4595: 'AGI',
   
+
+
+    }
+
+    data = {
+      HNO: ['3,328.9', '7,500,000', ' 5,192,250', '19', '3,630'],
+      A: ['77', '7,7,000', ' 5,7,250', '77', '777']
+    }
+
+    var tooltipSpan = document.getElementById('popup');
+
+    window.onmousemove = function (e) {
+        var x = e.clientX,
+            y = e.clientY;
+        tooltipSpan.style.top = (y + 20) + 'px';
+        tooltipSpan.style.left = (x + 20) + 'px';
+    };
+
+    function showPopup(pathId){
+      var info = data[mapping[pathId]];
+      $("#popup").css("display","block");
+      $("#area").text(info[0]);
+      $("#population").text(info[1]);
+      $("#worker").text(info[2]);
+      $("#zone").text(info[3]);
+      $("#project").text(info[4]);
+    }
+
+    $('path')
+      .mouseenter(function () {
+        if ($(this).attr("id") in mapping) {
+          showPopup($(this).attr("id"))
+        }
+         $(this).attr("stroke", 'red');
+         $(this).attr("stroke-width", '2');
+      })
+      .mouseleave(function () {
+         $(this).attr("stroke", null);
+         $("#popup").css("display","none");
+      })
+      .click(function () {
+        console.log($(this).attr("id"));
+      });
+
+    $('text').mouseenter(function () {
+       $(this).css("display", 'none');
+       var context = this;
+       setTimeout(function() {
+         // body...
+         $(context).css("display", 'inline');
+       }, 500);
+    });
+
+  });
+
+  </script>
 
 </head>
 <body>
 
-<div>
+
+
+<div class="tooltip">
   
+  <div id="popup" >
+  <ul>
+    <li> Total area: <span id="area"></span> km2 </li>
+    <li>Population: <span id="population"></span></li>
+    <li>Aged workers: <span id="worker"></span></li>
+    <li>Number of Industrial zone: <span id="zone"></span></li>
+    <li>Number of FDI project: <span id="project"></span></li>
+  </ul>
+  </div>
+
   <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
