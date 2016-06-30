@@ -87,8 +87,8 @@
       path4599: 'CMA',
       path4595: 'AGI',
       path4517: 'BNI',
-      path4573: 'TNI'
-      path9797: 'TNG'
+      path4573: 'TNI',
+      path9797: 'TNG',
     }
 
     data = {
@@ -119,9 +119,10 @@
       .mouseenter(function () {
         if ($(this).attr("id") in mapping) {
           //showPopup($(this).attr("id"))
+          $(this).attr("stroke", 'red');
+          $(this).attr("stroke-width", '2');
         }
-         $(this).attr("stroke", 'red');
-         $(this).attr("stroke-width", '2');
+         
       })
       .mouseleave(function () {
          $(this).attr("stroke", null);
