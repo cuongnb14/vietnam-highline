@@ -24,7 +24,7 @@
 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
   <script type="text/javascript">
-
+  //18 ĐẮC NÔNG 
   $(function() {
     mapping = {
       path4637: 'DBI',
@@ -38,7 +38,7 @@
       path9807: 'YBA',
       path9805: 'SLA',
       path9811: 'PTH',
-      path9803: 'VYE',
+      path9803: 'VPH',
       path9811: 'VTR',
       path9795: 'BGI',
       path4523: 'QNI',
@@ -46,7 +46,7 @@
       path9817: 'HYE',
       path4521: 'HPH',
       path4525: 'TBI',
-      path4527: 'PLI',
+      path4527: 'HNA',
       path9809: 'HNO',
       path9815: 'HBI',
       path4529: 'NDI',
@@ -69,7 +69,7 @@
       path4561: 'LDO',
       path4563: 'NTH',
       path4567: 'BTH',
-      path4571: 'DNA',
+      path4571: 'DNI',
       path4579: 'BRI',
       path4585: 'TGI',
       path4581: 'BDU',
@@ -86,9 +86,9 @@
       path4597: 'KGI',
       path4599: 'CMA',
       path4595: 'AGI',
-  
-
-
+      path4517: 'BNI',
+      path4573: 'TNI'
+      path9797: 'TNG'
     }
 
     data = {
@@ -118,7 +118,7 @@
     $('path')
       .mouseenter(function () {
         if ($(this).attr("id") in mapping) {
-          showPopup($(this).attr("id"))
+          //showPopup($(this).attr("id"))
         }
          $(this).attr("stroke", 'red');
          $(this).attr("stroke-width", '2');
